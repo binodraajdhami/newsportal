@@ -24,6 +24,14 @@
                         <li>
                             <a href="logout.php" class="nav-link" aria-current="page">Logout</a>
                         </li>
+                        <li>
+                            <a href="dashboard.php" class="nav-link" aria-current="page">
+                                <?php echo $_SESSION['name']; ?>
+                            </a>
+                        </li>
+                        <li class="user-image">
+                            <img src="images/<?php echo $_SESSION['image']; ?>" alt="">
+                        </li>
                     <?php } else { ?>
                         <li>
                             <a href="login.php" class="nav-link" aria-current="page">Login</a>

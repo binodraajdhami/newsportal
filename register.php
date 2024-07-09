@@ -66,6 +66,9 @@ if (isset($_POST['btn_register'])) {
                 (name,email,password,username,phone,dob,gender,status)
                 VALUES('$name','$email','$password','$username',phone,$dob,'$gender',$status)";
         $connection->query($sql);
+
+        // redirect to login page after successful register
+        header("location:login.php");
     }
 }
 
@@ -109,6 +112,7 @@ if (isset($_POST['btn_register'])) {
                 </div>
                 <button type="submit" name="btn_register" class="btn btn-primary">Submit</button>
             </form>
+            <p>Already have an account ? <a href="login.php">Login</a>
         </div>
     </div>
 </main>

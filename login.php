@@ -35,6 +35,7 @@ if (isset($_POST['btn_login'])) {
 
             // sesstion
             session_start();
+            $_SESSION['id'] = $user_data['id'];
             $_SESSION['name'] = $user_data['name'];
             $_SESSION['email'] = $user_data['email'];
             $_SESSION['image'] = $user_data['image'] ? $user_data['image'] : '';
