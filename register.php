@@ -2,6 +2,10 @@
 <?php include_once("configs/db_connection.php"); ?>
 <?php
 
+if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
+    header("location: dashboard.php");
+}
+
 if (isset($_POST['btn_register'])) {
 
     if (isset($_POST['name']) && !empty($_POST['name'])) {
@@ -65,15 +69,10 @@ if (isset($_POST['btn_register'])) {
     }
 }
 
-
-// echo "<pre>";
-// print_r($_POST);
-// echo "</pre>";
-
 ?>
 <main>
     <div class="container">
-        <div class="register-form">
+        <div class="auth-form">
             <h1>Register Form</h1>
             <form action="" method="POST">
                 <div class="form-group">

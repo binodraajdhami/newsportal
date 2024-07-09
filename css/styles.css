@@ -6,38 +6,29 @@ main {
     background: #fff;
 }
 
-/* register-form */
-.register-form {
+/* auth-form */
+.auth-form {
     background: #468585;
     width: 500px;
     padding: 30px;
     margin: 50px auto;
 }
 
-.register-form h1 {
+.auth-form h1 {
     color: #fff;
     font-size: 24px;
     text-align: center;
 }
 
-.register-form .form-group {
+.auth-form .form-group {
     margin-bottom: 15px;
 }
 
-.register-form label {
+.auth-form label {
     color: #fff;
 }
 
-/* login form */
-.login-form {
-    background: #468585;
-    width: 500px;
-    padding: 30px;
-    margin: 50px auto;
-}
-
-.login-form h1 {
+.auth-form p,
+.auth-form p a {
     color: #fff;
-    font-size: 24px;
-    text-align: center;
 }

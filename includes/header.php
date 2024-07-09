@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,12 +19,19 @@
                     <li class="nav-item">
                         <a href="." class="nav-link" aria-current="page" href="#">Home</a>
                     </li>
-                    <li>
-                        <a href="login.php" class="nav-link" aria-current="page" href="#">Login</a>
-                    </li>
-                    <li>
-                        <a href="register.php" class="nav-link" aria-current="page" href="#">Register</a>
-                    </li>
+                    <?php
+                    if (isset($_SESSION['email']) && !empty($_SESSION['email'])) { ?>
+                        <li>
+                            <a href="logout.php" class="nav-link" aria-current="page">Logout</a>
+                        </li>
+                    <?php } else { ?>
+                        <li>
+                            <a href="login.php" class="nav-link" aria-current="page">Login</a>
+                        </li>
+                        <li>
+                            <a href="register.php" class="nav-link" aria-current="page">Register</a>
+                        </li>
+                    <?php } ?>
                 </ul>
             </div>
         </nav>
