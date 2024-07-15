@@ -29,8 +29,9 @@ if (isset($_POST['bnt_profile_edit'])) {
                     include_once("configs/db_connection.php");
                     $user_email = $_SESSION['email'];
                     $sql = "UPDATE tbl_users set image='$image_new_name' where email='$user_email'";
-
                     $connection->query($sql);
+
+                    $_SESSION['image'] = $image_new_name;
                 }
 
                 $image_uploaded_success = "Image Uploaed Succesful!";

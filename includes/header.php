@@ -21,6 +21,20 @@
                     </li>
                     <?php
                     if (isset($_SESSION['email']) && !empty($_SESSION['email'])) { ?>
+
+                        <?php if ($_SESSION['role'] == 'admin') { ?>
+                            <li>
+                                <a href="list_category.php" class="nav-link" aria-current="page">
+                                    Category Management
+                                </a>
+                            </li>
+                            <li>
+                                <a href="list_news.php" class="nav-link" aria-current="page">
+                                    News Management
+                                </a>
+                            </li>
+                        <?php } ?>
+
                         <li>
                             <a href="logout.php" class="nav-link" aria-current="page">Logout</a>
                         </li>

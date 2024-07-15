@@ -38,10 +38,18 @@ if (isset($_POST['btn_login'])) {
             $_SESSION['id'] = $user_data['id'];
             $_SESSION['name'] = $user_data['name'];
             $_SESSION['email'] = $user_data['email'];
+            $_SESSION['role'] = $user_data['role'];
             $_SESSION['image'] = $user_data['image'] ? $user_data['image'] : '';
 
-            // redirect to dashboard
-            header("location:dashboard.php");
+            // redirect to user dashboard
+            if ($user_data['role'] == 'user') {
+                header("location:user_dashboard.php");
+            }
+
+            // redirect to admin dashboard
+            if ($user_data['role'] == 'admin') {
+                header("location:admin_dashboard.php");
+            }
         } else {
             $error_login = "Invalid email or password";
         }

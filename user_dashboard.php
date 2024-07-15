@@ -8,7 +8,7 @@ if (!isset($_SESSION['email']) && empty($_SESSION['email'])) {
 ?>
 <main>
     <div class="container">
-        <h1>Welcome dashaboard</h1>
+        <h1>Welcome User Dashboard</h1>
 
         <a href="profile_edit.php">Edit Profile</a>
     </div>
