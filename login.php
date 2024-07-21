@@ -4,7 +4,7 @@
 <?php
 
 if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
-    header("location: dashboard.php");
+    header("location: admin_dashboard.php");
 }
 
 if (isset($_POST['btn_login'])) {
