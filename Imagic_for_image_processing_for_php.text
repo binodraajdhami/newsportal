@@ -1,0 +1,13 @@
+#1. Paste : xampp > apache > bin
+===============================
+CORE_RL_
+IM_MOD_
+
+#2. Paste : xampp > php > ext
+===============================
+php_imagick.dll
+
+#3. Enable Imagick : php.ini
+===============================
+extension=imagick
+imagick.skip_version_check=true

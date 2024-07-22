@@ -15,6 +15,12 @@ if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
 
         $categories = [];
         while ($data = $result->fetch_assoc()) {
+
+            $user_id =  $data['created_by'];
+            $get_user = "SELECT * from tbl_users where id=$user_id";
+            $user = $connection->query($get_user);
+            $data['created_by'] =  $user->fetch_assoc();
+
             array_push($categories, $data);
         }
     }
@@ -30,6 +36,7 @@ if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
                 <tr>
                     <th>SN</th>
                     <th>Category Name</th>
+                    <th>Created By</th>
                     <th>Rank</th>
                     <th>Actions</th>
                 </tr>
@@ -39,6 +46,7 @@ if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
                     <tr>
                         <td><?php echo $index + 1; ?></td>
                         <td><?php echo $category['name']; ?></td>
+                        <td><?php echo $category['created_by']['name']; ?></td>
                         <td><?php echo $category['rank']; ?></td>
                         <td>
                             <a href="view_category.php?id=<?php echo $category['id']; ?>" class="btn btn-primary">View</a>
