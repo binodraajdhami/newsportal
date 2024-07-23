@@ -1,4 +1,17 @@
-<?php session_start(); ?>
+<?php
+session_start();
+
+// database connectioin
+include_once("configs/db_connection.php");
+$sql = "SELECT * from tbl_cagetogries";
+$result = $connection->query($sql);
+
+$categories = [];
+while ($data = $result->fetch_assoc()) {
+    array_push($categories, $data);
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,29 +30,29 @@
             <div class="container">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="." class="nav-link" aria-current="page" href="#">Home</a>
+                        <a href="." class="nav-link" href="#">Home</a>
                     </li>
                     <?php
                     if (isset($_SESSION['email']) && !empty($_SESSION['email'])) { ?>
 
                         <?php if ($_SESSION['role'] == 'admin') { ?>
                             <li>
-                                <a href="list_category.php" class="nav-link" aria-current="page">
+                                <a href="list_category.php" class="nav-link">
                                     Category Management
                                 </a>
                             </li>
                             <li>
-                                <a href="list_news.php" class="nav-link" aria-current="page">
+                                <a href="list_news.php" class="nav-link">
                                     News Management
                                 </a>
                             </li>
                         <?php } ?>
 
                         <li>
-                            <a href="logout.php" class="nav-link" aria-current="page">Logout</a>
+                            <a href="logout.php" class="nav-link">Logout</a>
                         </li>
                         <li>
-                            <a href="dashboard.php" class="nav-link" aria-current="page">
+                            <a href="dashboard.php" class="nav-link">
                                 <?php echo $_SESSION['name']; ?>
                             </a>
                         </li>
@@ -47,11 +60,20 @@
                             <img src="images/<?php echo $_SESSION['image']; ?>" alt="">
                         </li>
                     <?php } else { ?>
+
+                        <?php foreach ($categories as $cat) { ?>
+                            <li>
+                                <a href="?id=<?php echo $cat['id'] ?>" class="nav-link">
+                                    <?php echo $cat['name']; ?>
+                                </a>
+                            </li>
+                        <?php } ?>
+
                         <li>
-                            <a href="login.php" class="nav-link" aria-current="page">Login</a>
+                            <a href="login.php" class="nav-link">Login</a>
                         </li>
                         <li>
-                            <a href="register.php" class="nav-link" aria-current="page">Register</a>
+                            <a href="register.php" class="nav-link">Register</a>
                         </li>
                     <?php } ?>
                 </ul>

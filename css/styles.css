@@ -38,3 +38,8 @@ main {
     height: 40px;
     border-radius: 50%;
 }
+
+.news-card {
+    padding: 15px;
+    background: #ccc;
+}

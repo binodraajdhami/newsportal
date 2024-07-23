@@ -21,6 +21,11 @@ if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
             $user = $connection->query($get_user);
             $data['created_by'] =  $user->fetch_assoc();
 
+            $up_user_id =  $data['updated_by'];
+            $up_get_user = "SELECT * from tbl_users where id=$up_user_id";
+            $up_user = $connection->query($up_get_user);
+            $data['updated_by'] =  $up_user->fetch_assoc();
+
             array_push($newses, $data);
         }
     }
@@ -37,6 +42,7 @@ if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
                     <th>SN</th>
                     <th>Category ID </th>
                     <th>Created By</th>
+                    <th>Updated By</th>
                     <th>Title</th>
                     <th>Short Description</th>
                     <th>Actions</th>
@@ -48,6 +54,7 @@ if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
                         <td><?php echo $index + 1; ?></td>
                         <td><?php echo $news['category_id']; ?></td>
                         <td><?php echo $news['created_by']['name']; ?></td>
+                        <td><?php echo $news['updated_by']['name']; ?></td>
                         <td><?php echo $news['title']; ?></td>
                         <td><?php echo $news['short_description']; ?></td>
                         <td>
